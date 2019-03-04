@@ -1,4 +1,5 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Authors-Haven frontend
+[![Build Status](https://travis-ci.com/andela/ah-bird-box-frontend.svg?branch=develop)](https://travis-ci.com/andela/ah-bird-box-frontend) [![Maintainability](https://api.codeclimate.com/v1/badges/62e0b3de47bbadc73810/maintainability)](https://codeclimate.com/github/andela/ah-bird-box-frontend/maintainability) [![Test Coverage](https://api.codeclimate.com/v1/badges/62e0b3de47bbadc73810/test_coverage)](https://codeclimate.com/github/andela/ah-bird-box-frontend/test_coverage)
 
 ## Available Scripts
 
