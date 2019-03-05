@@ -1,28 +1,48 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import * as actions from './actions';
 
-const App = () => (
-  <div className="App">
-    <header className="App-header">
-      <img src={logo} className="App-logo" alt="logo" />
-      <p>
-        Edit
-        {' '}
-        <code>src/App.js</code>
-        {' '}
-and save to reload.
-      </p>
-      <a
-        className="App-link"
-        href="https://reactjs.org"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Learn React
-      </a>
-    </header>
-  </div>
-);
 
-export default App;
+class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleChange(event) {
+    const text = event.target.value;
+    const { simpleAction } = this.props;
+    simpleAction(text);
+  }
+
+  render() {
+    const { text } = this.props;
+    return (
+      <div className="App">
+        <input
+          onChange={this.handleChange}
+          type="text"
+        />
+        <p>
+          {text && text.text}
+        </p>
+      </div>
+    );
+  }
+}
+App.propTypes = {
+  simpleAction: PropTypes.shape({}).isRequired,
+  text: PropTypes.shape({}).isRequired,
+};
+
+const mapStateToProps = ({ text }) => ({ text });
+const mapDispatchToProps = dispatch => ({
+  simpleAction: text => dispatch(actions.simpleAction(text)),
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(App);
