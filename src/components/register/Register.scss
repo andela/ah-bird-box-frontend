@@ -1,0 +1,25 @@
+.signup-div {
+  margin: auto;
+  color: green;
+  margin-top: 7px;
+}
+
+#submit {
+  margin-top: 4px;
+  background-color: green;
+  color: white;
+  border: 1px solid green;
+}
+
+#submit:hover {
+  margin-top: 4px;
+  background-color: white;
+  color: green;
+  border: 1px solid green;
+}
+
+#verify-mail-notif {
+  font-size: 20px;
+  text-align: center;
+  margin-top: 20px;
+}
