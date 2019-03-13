@@ -1,10 +1,11 @@
+/* eslint-disable react/prefer-stateless-function */
 import React, { Component } from 'react';
-import {BrowserRouter, Route, Switch} from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import Home from './views/HomeView';
-import Login from './views/LoginView';
-import Navigation from './views/NavigationView';
+import LoginView from './components/login/Login';
+import NavigationView from './components/Navigation';
 
 
 class App extends Component {
@@ -12,10 +13,10 @@ class App extends Component {
     return (
       <BrowserRouter>
         <div>
-          <Navigation />
+          <NavigationView />
           <Switch>
-            <Route exact path ="/" component={Home}/>
-            <Route path ="/login" component={Login}/>
+            <Route exact path="/" component={Home} />
+            <Route exact path="/login" component={LoginView} />
           </Switch>
         </div>
       </BrowserRouter>

@@ -1,4 +1,8 @@
 import { combineReducers } from 'redux';
-import sampleReducer from './sample';
+import { reducer as toastrReducer } from 'react-redux-toastr';
+import loginReducer from './login';
 
-export default combineReducers({ text: sampleReducer });
+export default combineReducers({
+  login: loginReducer,
+  toastr: toastrReducer,
+});
