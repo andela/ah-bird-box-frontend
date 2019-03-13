@@ -21,7 +21,7 @@ class RegisterView extends Component {
     };
 
     if (this.state.password !== this.state.confirmPassword) {
-      toastr.error('Password', 'Passwords do not match');
+      toastr.error("Passwords do not match");
     } else {
       this.props.signUpUser(userData);
     }

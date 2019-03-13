@@ -4,6 +4,7 @@ import {
 } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import loginUser from '../../actions/loginUser';
+import SocialAuthView from '../../views/SocialAuthView';
 
 
 // This code is a modification of the sample login page from Semantic UI
@@ -66,8 +67,13 @@ class LoginView extends Component {
                 <br />
               </Segment>
             </Form>
+            <br />
+            <p>or login with</p>
+            <SocialAuthView />
             <Message>
-              New to us? Sign Up
+                New to us?
+              {' '}
+              <a href="/register">Sign up</a>
             </Message>
           </Grid.Column>
         </Grid>

@@ -2,6 +2,7 @@ import React from 'react';
 import {
   Button, Form, Grid, Header, Message, Segment,
 } from 'semantic-ui-react';
+import SocialAuthView from '../views/SocialAuthView';
 
 // This code is a modification of the sample login page from Semantic UI
 const LoginView = () => (
