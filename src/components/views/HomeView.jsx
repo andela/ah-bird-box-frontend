@@ -1,5 +1,6 @@
+/* eslint-disable react/prefer-stateless-function */
 import React, { Component } from 'react';
-import HomeView from '../components/Home';
+import HomeView from '../Home';
 
 class Home extends Component {
   render() {
