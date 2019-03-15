@@ -6,6 +6,7 @@ module.exports = {
     jest: true,
   },
   extends: 'airbnb',
+  parser: 'babel-eslint',
   globals: {
     Atomics: 'readonly',
     SharedArrayBuffer: 'readonly',
