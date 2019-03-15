@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import { connect } from 'react-redux';
 
 import Home from './views/HomeView';
 import LoginView from './components/login/Login';
 import NavigationView from './components/Navigation';
-
 import Register from './components/register/Register';
 import verifyMail from './components/register/verifyEmail';
 import verify from './components/register/verify';
@@ -29,4 +27,4 @@ class App extends Component {
     );
   }
 }
-export default connect()(App);
+export default (App);

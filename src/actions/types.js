@@ -7,3 +7,7 @@ export const REGISTER_SUCCESS = 'REGISTER_SUCCESS';
 export const VERIFY_SUCCESS = 'VERIFY_SUCCESS';
 export const VERIFY_FAIL = 'VERIFY_FAIL';
 export const VERIFY_TRIGGER = 'VERIFY_TRIGGER';
+export const FACEBOOK = 'FACEBOOK_AUTH_CODE';
+export const GOOGLE = 'GOOGLE_AUTH_CODE';
+export const LOGIN_START = 'LOGIN_START';
+export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';

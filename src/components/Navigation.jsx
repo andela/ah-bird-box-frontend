@@ -11,6 +11,7 @@ class NavigationView extends Component {
   logout = () => {
     localStorage.removeItem('user');
     localStorage.removeItem('token');
+    localStorage.removeItem('username');
     window.location.assign('/');
   }
 

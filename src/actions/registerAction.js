@@ -26,6 +26,7 @@ export const signUpUser = userData => (dispatch) => {
       toastr.success('Sign Up successful!', response.data.user.message);
     })
     .catch((error) => {
+      console.log(error.response);
       dispatch(registerFail(error.response.data));
       if (error.response.data.errors.email !== undefined) {
         toastr.error('Email', error.response.data.errors.email[0]);
