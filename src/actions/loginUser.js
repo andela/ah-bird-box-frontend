@@ -1,6 +1,6 @@
 import { toastr } from 'react-redux-toastr';
 import { LOGIN_USER, LOGIN_ERROR, LOGIN_REQUEST } from './types';
-import axiosConfig from '../config/configAxios';
+import axiosConfig from '../config/axios';
 
 const loginUser = credentials => (dispatch) => {
   dispatch({
@@ -9,7 +9,7 @@ const loginUser = credentials => (dispatch) => {
   delete axiosConfig.defaults.headers.common.Authorization;
   localStorage.clear();
   axiosConfig
-    .post('/users/login/', credentials)
+    .post('/api/users/login/', credentials)
     .then((res) => {
       if (res) {
         dispatch({
@@ -23,6 +23,7 @@ const loginUser = credentials => (dispatch) => {
       }
     })
     .catch((errors) => {
+      console.log(errors.response)
       const err = JSON.parse(errors.request.response);
       dispatch({
         type: LOGIN_ERROR,

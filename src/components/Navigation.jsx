@@ -32,7 +32,9 @@ class NavigationView extends Component {
                 <Menu.Item name="Login" />
               </NavLink>
             )}
-
+          <NavLink to="/register">
+            <Menu.Item name="Register" />
+          </NavLink>
         </Menu>
       </div>
     );
