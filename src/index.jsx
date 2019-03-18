@@ -5,10 +5,10 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import ReduxToastr from 'react-redux-toastr';
+import 'react-redux-toastr/lib/css/react-redux-toastr.min.css';
 import 'semantic-ui-css/semantic.min.css';
 import './index.scss';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import 'react-redux-toastr/lib/css/react-redux-toastr.min.css';
 import reducers from './reducers';
 
 import App from './App';
@@ -40,3 +40,9 @@ ReactDOM.render(
   </Provider>,
   document.getElementById('root'),
 );
+
+export default {
+  profileReducer: {
+    profile: {},
+  },
+};

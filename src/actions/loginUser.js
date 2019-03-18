@@ -16,14 +16,10 @@ const loginUser = credentials => (dispatch) => {
           type: LOGIN_USER,
           payload: { ...res.data.user, success: true },
         });
-        toastr.success(
-          'Successful Login',
-          `${res.data.user.username} logged in successfully`,
-        );
+        toastr.success('Successful Login', `${res.data.user.username} logged in successfully`);
       }
     })
     .catch((errors) => {
-      console.log(errors.response)
       const err = JSON.parse(errors.request.response);
       dispatch({
         type: LOGIN_ERROR,
