@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import { Menu } from 'semantic-ui-react';
+import { Menu, Button, Dropdown } from 'semantic-ui-react';
 import loginUser from '../actions/loginUser';
+import './Navigation.scss';
 
 class NavigationView extends Component {
   logout = () => {
@@ -12,33 +13,67 @@ class NavigationView extends Component {
     window.location.assign('/');
   };
 
+  signUp = () => {
+    window.location.assign('/register');
+  }
+
+  createArticle = () => {
+    window.location.assign('/article');
+  }
+
   render() {
     const loggedinUser = window.localStorage.getItem('token');
     return (
-      <div>
-        <Menu text>
+      <React.Fragment>
+        <Menu pointing secondary fixed="top" className="top-menu">
           <NavLink to="/">
-            <Menu.Item name="Home" />
+            <Menu.Item
+              name="Author's Haven"
+              className="brand"
+            />
           </NavLink>
-          <NavLink to="/register">
-            <Menu.Item name="Register" />
+          <NavLink to="/">
+            <Menu.Item
+              name="Articles"
+              active
+              onClick={this.handleItemClick}
+            />
           </NavLink>
-          {loggedinUser ? (
-            <React.Fragment>
-              <NavLink to="/getprofile">
-                <Menu.Item name="Profile" />
-              </NavLink>
-              <NavLink to="/">
-                <Menu.Item onClick={this.logout} name="Logout" />
-              </NavLink>
-            </React.Fragment>
-          ) : (
-            <NavLink to="/login">
-              <Menu.Item name="Login" />
-            </NavLink>
-          )}
+
+          <Menu.Menu position="right">
+            {loggedinUser ? (
+              <React.Fragment>
+                <Menu.Item>
+                  <Button primary onClick={this.createArticle}>Create Article</Button>
+                </Menu.Item>
+                <Dropdown item text={window.localStorage.getItem('username')}>
+                  <Dropdown.Menu>
+                    <NavLink to="/getprofile">
+                      <Menu.Item name="Profile" />
+                    </NavLink>
+                    <NavLink to="/">
+                      <Menu.Item onClick={this.logout} name="Logout" />
+                    </NavLink>
+                  </Dropdown.Menu>
+                </Dropdown>
+              </React.Fragment>
+            ) : (
+              <React.Fragment>
+                <NavLink to="/login">
+                  <Menu.Item name="Login" />
+                </NavLink>
+                <Menu.Item>
+                  <Button primary onClick={this.signUp}>Sign Up</Button>
+                </Menu.Item>
+              </React.Fragment>
+
+            )}
+          </Menu.Menu>
         </Menu>
-      </div>
+        <br />
+        <br />
+        <br />
+      </React.Fragment>
     );
   }
 }

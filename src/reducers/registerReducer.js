@@ -1,6 +1,6 @@
 import { REGISTER_SUCCESS, REGISTER_TRIGGER, REGISTER_FAILED } from '../actions/types';
 
-const initialState = {
+export const initialState = {
   isSignedUp: false,
   isLoading: false,
   isVerified: false,
