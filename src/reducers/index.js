@@ -5,6 +5,8 @@ import loginReducer from './login';
 import verifyReducer from './verifyReducer';
 import registerReducer from './registerReducer';
 import SocialAuthReducer from './socialauthreducer';
+import fetchProfilesReducers from './fetchProfilesReducer';
+import specificProfileReducer from './specificProfileReducer';
 
 export default combineReducers({
   verify: verifyReducer,
@@ -13,4 +15,8 @@ export default combineReducers({
   toastr: toastReeducer,
   login: loginReducer,
   socialAuth: SocialAuthReducer,
+  profiles: fetchProfilesReducers,
+  searchedProfile: specificProfileReducer,
+
+
 });

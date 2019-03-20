@@ -12,6 +12,7 @@ import EditProfile from './components/profile/editprofile';
 import Register from './components/register/Register';
 import verifyMail from './components/register/verifyEmail';
 import verify from './components/register/verify';
+import UserProfiles from './components/profile/usersprofile';
 
 // eslint-disable-next-line react/prefer-stateless-function
 class App extends Component {
@@ -26,8 +27,9 @@ class App extends Component {
             <Route exact path="/register" component={Register} />
             <Route exact path="/verifymail" component={verifyMail} />
             <Route exact path="/verify/:token" component={verify} />
-            <Route path="/getprofile" component={Profile} />
-            <Route path="/edit-profile" component={EditProfile} />
+            <Route exact path="/getprofile" component={Profile} />
+            <Route exact path="/edit-profile" component={EditProfile} />
+            <Route exact path="/profiles" component={UserProfiles} />
           </Switch>
         </div>
       </BrowserRouter>

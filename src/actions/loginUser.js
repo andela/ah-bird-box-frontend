@@ -6,7 +6,7 @@ const loginUser = credentials => (dispatch) => {
   dispatch({
     type: LOGIN_REQUEST,
   });
-  delete axiosConfig.defaults.headers.common.Authorization;
+  delete axiosConfig.defaults.headers.Authorization;
   localStorage.clear();
   axiosConfig
     .post('/api/users/login/', credentials)
