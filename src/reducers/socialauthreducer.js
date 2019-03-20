@@ -1,4 +1,4 @@
-import { LOGIN_ERROR, LOGIN_START, LOGIN_SUCCESS } from '../actions/types';
+import { SOCIAL_LOGIN_ERROR, LOGIN_START, LOGIN_SUCCESS } from '../actions/types';
 
 export const initialState = {
   isLoading: false,
@@ -24,7 +24,7 @@ const SocialAuthReducer = (state = initialState, action) => {
         error: false,
         errors: {},
       };
-    case LOGIN_ERROR:
+    case SOCIAL_LOGIN_ERROR:
       return {
         ...action.payload,
         message: 'failed',

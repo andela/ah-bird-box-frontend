@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
-import { Redirect } from 'react-router-dom';
 import { toastr } from 'react-redux-toastr';
 import { auth, GoogleProvider, FacebookProvider } from '../../config/firebase';
 import { FACEBOOK, GOOGLE } from '../../actions/types';
@@ -10,6 +9,17 @@ import SocialButton from '../../components/SocialAuthButttons';
 import { socialAuthLogin } from '../../actions/socialAuthActions';
 
 class SocialAuthView extends Component {
+
+    componentWillReceiveProps(nextProps) {
+      if (nextProps.socialAuth.message === 'success' && !nextProps.socialAuth.isLoading) {
+        return (
+          toastr.success(`${localStorage.getItem('username')} logged in successfully`),
+            setInterval(() => {
+              window.location.assign('/');
+            }, 2000)
+        );
+      }
+    }
   constructor(props) {
     super(props);
     this.state = {
@@ -97,12 +107,6 @@ class SocialAuthView extends Component {
   );
 
   render() {
-    if (this.props.socialAuth.message === 'success' && !this.props.socialAuth.isLoading) {
-      return (
-        toastr.success(`${localStorage.getItem('username')} logged in successfully`),
-          <Redirect to="/" />
-      );
-    }
     const { providers } = this.state;
     const { socialAuth } = this.props;
     const { isLoading } = socialAuth;

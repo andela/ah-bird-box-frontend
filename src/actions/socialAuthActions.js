@@ -19,7 +19,7 @@ export const loginSuccess = payload => ({
   payload,
 });
 export const loginError = payload => ({
-  type: types.LOGIN_ERROR,
+  type: types.SOCIAL_LOGIN_ERROR,
   payload,
 });
 

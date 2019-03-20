@@ -65,6 +65,7 @@ class LoginView extends Component {
 
                 <Button fluid content="Login" type="submit" className="ui green button" onClick={this.onSubmit} />
                 <br />
+                <p>Forgot Password? Click <a href="/reset-password">here</a></p>
               </Segment>
             </Form>
             <br />
