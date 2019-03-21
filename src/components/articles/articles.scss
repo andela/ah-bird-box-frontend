@@ -23,11 +23,6 @@ input {
     font-size: 40px;
 }
 
-#article-holder img {
-    width: 50% !important;
-    height: 30vh !important;
-}
-
 #article-holder h3 {
     color: grey;
 }
@@ -89,4 +84,14 @@ h2.art-title {
 
 #create-article-container .public-DraftEditor-content[contenteditable=true] {
     height: 30vh;
+}
+
+#articles-list-container {
+	width: 80%;
+	margin-left: 20vw;
+	margin-top: 20px;
+}
+
+.article-container {
+	padding: 35px;
 }

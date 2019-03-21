@@ -105,6 +105,7 @@ class EditArticle extends Component {
             <input type="text" Value={this.props.article.isSuccess ? this.props.article.articles.article.description : null} name="description" className="form-control" placeholder="Description for the article" />
           </p>
           <Editor
+            toolbarOnFocus
             editorState={editorState}
             toolbarClassName="toolbarClassName"
             wrapperClassName="wrapperClassName"

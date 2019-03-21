@@ -109,15 +109,9 @@ class createArticleView extends Component {
             onChange={this.onChange}
           />
           <Divider />
-          <Form.Input
-            name="image"
-            type="file"
-            className="form-control"
-            onChange={this.onChange}
-          />
-          <Divider />
           <br />
           <Editor
+            toolbarOnFocus
             body={editorState}
             toolbarClassName="toolbarClassName"
             wrapperClassName="wrapperClassName"

@@ -4,7 +4,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import NavigationView from './components/Navigation';
-import Home from './components/views/HomeView';
+import HomeView from './components/articles/List';
 import LoginView from './components/login/Login';
 import Profile from './components/profile/profile';
 import EditProfile from './components/profile/editprofile';
@@ -29,7 +29,7 @@ class App extends Component {
         <div>
           <NavigationView />
           <Switch>
-            <Route exact path="/" component={Home} />
+            <Route exact path="/" component={HomeView} />
             <Route exact path="/login" component={LoginView} />
             <Route exact path="/register" component={Register} />
             <Route exact path="/verifymail" component={verifyMail} />
