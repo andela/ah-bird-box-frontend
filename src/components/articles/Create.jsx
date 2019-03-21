@@ -112,6 +112,7 @@ class createArticleView extends Component {
           <br />
           <Editor
             toolbarOnFocus
+            placeholder="The body of the article goes here..."
             body={editorState}
             toolbarClassName="toolbarClassName"
             wrapperClassName="wrapperClassName"
