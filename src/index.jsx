@@ -27,16 +27,7 @@ ReactDOM.render(
       closeOnToastrClick
     />
     <App />
-    <ReduxToastr
-      timeOut={5000}
-      newestOnTop={false}
-      preventDuplicates
-      position="top-center"
-      transitionIn="bounceIn"
-      transitionOut="bounceOut"
-      progressBar
-      closeOnToastrClick
-    />
+
   </Provider>,
   document.getElementById('root'),
 );
@@ -44,5 +35,11 @@ ReactDOM.render(
 export default {
   profileReducer: {
     profile: {},
+  },
+  profiles: {
+    users: [],
+  },
+  searchedProfile: {
+    user: {},
   },
 };

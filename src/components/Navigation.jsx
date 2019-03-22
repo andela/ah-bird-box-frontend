@@ -4,7 +4,6 @@ import { NavLink } from 'react-router-dom';
 import { Menu } from 'semantic-ui-react';
 import loginUser from '../actions/loginUser';
 
-
 class NavigationView extends Component {
   logout = () => {
     localStorage.removeItem('user');
@@ -25,17 +24,15 @@ class NavigationView extends Component {
             <Menu.Item name="Register" />
           </NavLink>
           {loggedinUser ? (
-                <div>
-                <NavLink to="/getprofile">
-                    <Menu.Item name="Profile" />
-                  </NavLink>
-                  
-                  <NavLink to="/">
-                    <Menu.Item onClick={this.logout} name="Logout" />
-                  </NavLink>
-
-              </div>
-            ) : (
+            <React.Fragment>
+              <NavLink to="/getprofile">
+                <Menu.Item name="Profile" />
+              </NavLink>
+              <NavLink to="/">
+                <Menu.Item onClick={this.logout} name="Logout" />
+              </NavLink>
+            </React.Fragment>
+          ) : (
             <NavLink to="/login">
               <Menu.Item name="Login" />
             </NavLink>

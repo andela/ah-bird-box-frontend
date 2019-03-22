@@ -1,9 +1,6 @@
 .home {
   padding-top: 5%;
 }
-#grid_system {
-  padding-top: 10%;
-}
 
 #pull-right {
   padding-left: 31%;
@@ -11,7 +8,6 @@
 
 #personal-info {
   padding-left: 28%;
-  font-size: 45px;
 }
 
 #username {
@@ -65,4 +61,13 @@
     margin: 1.5rem !important;
     padding: 0 !important;
   }
+}
+
+#followers {
+  width: 20% !important;
+  margin-left: 30vw;
+}
+
+a {
+  color:black;
 }

@@ -1,5 +1,4 @@
 /* eslint-disable no-unused-vars */
-import { types } from 'util';
 import { GET_PROFILE_SUCCESS, UPDATE_PROFILE_SUCCESS } from './types';
 import profileApi from '../api/profileApi';
 
