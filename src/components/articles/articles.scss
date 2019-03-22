@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css?family=Orbitron');
+
+textarea {
+    width: 100%;
+    height: 100%;
+}
+
+input {
+    width: 100%;
+    height: 100%;
+}
+
+#article-holder {
+    width: 60%;
+    background-color: #f2f2f2 !important;
+    padding: 30px 70px 70px;
+    text-align: center;
+}
+
+#article-holder p span {
+    background-color: #f2f2f2 !important;
+    font-family: 'Times New Roman', Times, serif !important;
+    font-size: 40px;
+}
+
+#article-holder img {
+    width: 50% !important;
+    height: 30vh !important;
+}
+
+#article-holder h3 {
+    color: grey;
+}
+
+h2.art-title {
+	font-family: 'Orbitron', sans-serif;
+    font-size: 34px;
+}
+
+#single-article-container {
+    margin-top: 30px;
+    font-size: 20px;
+}
+
+#edit-article-holder {
+    width: 80%;
+}
+
+*{padding:0;margin:0;}
+
+.float-e{
+	position:fixed;
+	width:60px;
+	height:60px;
+	bottom:300px;
+	right:80px;
+	background-color: #21ba45;
+	color:#FFF;
+	border-radius:50px;
+	text-align:center;
+	box-shadow: 2px 2px 3px #999;
+}
+
+.float-edit{
+	margin-top:22px;
+}
+
+.float-t {
+	position:fixed;
+	width:60px;
+	height:60px;
+	bottom:230px;
+	right:80px;
+	background-color: red;
+	color:#FFF;
+	border-radius:50px;
+	text-align:center;
+	box-shadow: 2px 2px 3px #999;
+}
+
+.float-trash{
+	margin-top:22px;
+}

@@ -1,0 +1,5 @@
+REACT_APP_API_URL="api_url_without_a_trailing_slash"
+REACT_APP_API_KEY="firebaseapp_api_key"
+REACT_APP_AUTH_DOMAIN="firebaseapp_app_url"
+REACT_APP_IMGUR_CLIENT_ID="Client-ID imgur_key_value"
+REACT_APP_IMGUR_URL="imgur_post_image_url"

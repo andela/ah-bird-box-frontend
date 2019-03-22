@@ -11,6 +11,7 @@ import {
 import EditProfile from './editprofile';
 
 import * as profileActions from '../../actions/profileAction';
+import Loader from '../loader';
 import '../../styles/profile.scss';
 import RetrieveUserProfilesAPI from '../../api/fetchProfileApi';
 
@@ -41,7 +42,7 @@ class Profile extends React.Component {
 
   render() {
     if (!this.state.fetched) {
-      return <h1>Loading...</h1>;
+      return <Loader />;
     }
     const { profile } = this.props;
 

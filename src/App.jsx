@@ -17,6 +17,8 @@ import UserProfiles from './components/profile/usersprofile';
 import ResetPassword from './components/login/resetPassword';
 import UpdatePass from './components/login/updatePass';
 import PasswordUpdate from './components/login/updatePassword';
+import SingleArticle from './components/articles/singleArticle';
+import EditArticle from './components/articles/singleArticleEdit';
 
 // eslint-disable-next-line react/prefer-stateless-function
 class App extends Component {
@@ -39,6 +41,8 @@ class App extends Component {
             <Route exact path="/reset-password" component={ResetPassword} />
             <Route exact path="/updatepassword" component={UpdatePass} />
             <Route exact path="/update_password/:token" component={PasswordUpdate} />
+            <Route exact path="/articles/:slug" component={SingleArticle} />
+            <Route exact path="/articles/edit/:slug" component={EditArticle} />
           </Switch>
         </div>
       </BrowserRouter>

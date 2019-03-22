@@ -9,6 +9,7 @@ import fetchProfilesReducers from './fetchProfilesReducer';
 import specificProfileReducer from './specificProfileReducer';
 import resetPasswordReducer from './resetPasswordReducer';
 import updatePasswordReducer from './updatePasswordReducer';
+import ArticlesReducer from './articlesReducer';
 
 export default combineReducers({
   verify: verifyReducer,
@@ -21,4 +22,5 @@ export default combineReducers({
   searchedProfile: specificProfileReducer,
   resetPassword: resetPasswordReducer,
   updatePassword: updatePasswordReducer,
+  article: ArticlesReducer,
 });

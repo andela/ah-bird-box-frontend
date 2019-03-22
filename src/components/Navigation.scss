@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css?family=Over+the+Rainbow');
+
+a {
+    text-decoration: none !important;
+}
+
+.top-menu {
+    background-color: white !important;
+    height: 50px !important;
+    border-bottom: #21ba45;
+}
+
+.top-menu button {
+    background-color: #21ba45 !important;
+    border: 1px solid #21ba45 !important;
+}
+
+.top-menu button:hover {
+    background-color: white !important;
+    color: #21ba45 !important;
+    border: 1px solid #21ba45;
+}
+
+.top-menu .brand {
+    font-family: 'Over the Rainbow', cursive;
+    font-style: italic;
+    font-size: 20px;
+    color: #21ba45 !important;
+}
+
+.ui.secondary.pointing.menu {
+    border-bottom: 1px solid #21ba45;
+}

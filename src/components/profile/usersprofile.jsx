@@ -8,6 +8,8 @@ import cuid from 'cuid';
 import * as userProfiles from '../../actions/fetchProfileAction';
 import followUnfollow from '../../api/followUnfollowApi';
 import RetrieveUserProfilesAPI from '../../api/fetchProfileApi';
+import Loader from '../loader';
+
 
 const CardExampleCard = (props) => {
   const {
@@ -85,7 +87,11 @@ class ViewUsersPage extends React.Component {
   render() {
     {
       if (!this.state.showProfile) {
-        return <h1>Loading...</h1>;
+        return (
+          <div>
+            <Loader />
+          </div>
+        );
       }
       const { profiles } = this.props;
       const { followStatus, following, followers } = this.state;
