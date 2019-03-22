@@ -19,6 +19,7 @@ import UpdatePass from './components/login/updatePass';
 import PasswordUpdate from './components/login/updatePassword';
 import SingleArticle from './components/articles/singleArticle';
 import EditArticle from './components/articles/singleArticleEdit';
+import createArticleView from './components/articles/Create';
 
 // eslint-disable-next-line react/prefer-stateless-function
 class App extends Component {
@@ -43,6 +44,7 @@ class App extends Component {
             <Route exact path="/update_password/:token" component={PasswordUpdate} />
             <Route exact path="/articles/:slug" component={SingleArticle} />
             <Route exact path="/articles/edit/:slug" component={EditArticle} />
+            <Route exact path="/article" component={createArticleView} />
           </Switch>
         </div>
       </BrowserRouter>

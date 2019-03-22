@@ -15,7 +15,7 @@ import {
 import * as profileActions from '../../actions/profileAction';
 import '../../styles/profile.scss';
 
-const username = localStorage.getItem('username')
+const username = localStorage.getItem('username');
 
 
 class EditProfile extends React.Component {

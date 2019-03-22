@@ -81,3 +81,12 @@ h2.art-title {
 .float-trash{
 	margin-top:22px;
 }
+
+#create-article-container {
+	width: 80%;
+	margin: auto;
+}
+
+#create-article-container .public-DraftEditor-content[contenteditable=true] {
+    height: 30vh;
+}
