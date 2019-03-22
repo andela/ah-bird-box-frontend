@@ -1,4 +1,4 @@
-import { LOGIN_START, LOGIN_SUCCESS, LOGIN_ERROR } from '../actions/types';
+import { LOGIN_START, LOGIN_SUCCESS, SOCIAL_LOGIN_ERROR } from '../actions/types';
 import SocialAuthReducer, { initialState } from './socialauthreducer';
 
 describe('reducer tests for login with social options', () => {
@@ -13,7 +13,7 @@ describe('reducer tests for login with social options', () => {
   });
   it('the reducer should set error to true when there is a login error', () => {
     expect(SocialAuthReducer(null, {
-      type: LOGIN_ERROR,
+      type: SOCIAL_LOGIN_ERROR,
       payload: {},
     }).error).toEqual(true);
   });

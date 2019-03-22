@@ -14,6 +14,10 @@ import verifyMail from './components/register/verifyEmail';
 import verify from './components/register/verify';
 import UserProfiles from './components/profile/usersprofile';
 
+import ResetPassword from './components/login/resetPassword';
+import UpdatePass from './components/login/updatePass';
+import PasswordUpdate from './components/login/updatePassword';
+
 // eslint-disable-next-line react/prefer-stateless-function
 class App extends Component {
   render() {
@@ -30,6 +34,11 @@ class App extends Component {
             <Route exact path="/getprofile" component={Profile} />
             <Route exact path="/edit-profile" component={EditProfile} />
             <Route exact path="/profiles" component={UserProfiles} />
+            <Route path="/getprofile" component={Profile} />
+            <Route path="/edit-profile" component={EditProfile} />
+            <Route exact path="/reset-password" component={ResetPassword} />
+            <Route exact path="/updatepassword" component={UpdatePass} />
+            <Route exact path="/update_password/:token" component={PasswordUpdate} />
           </Switch>
         </div>
       </BrowserRouter>

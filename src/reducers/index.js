@@ -7,6 +7,8 @@ import registerReducer from './registerReducer';
 import SocialAuthReducer from './socialauthreducer';
 import fetchProfilesReducers from './fetchProfilesReducer';
 import specificProfileReducer from './specificProfileReducer';
+import resetPasswordReducer from './resetPasswordReducer';
+import updatePasswordReducer from './updatePasswordReducer';
 
 export default combineReducers({
   verify: verifyReducer,
@@ -17,6 +19,6 @@ export default combineReducers({
   socialAuth: SocialAuthReducer,
   profiles: fetchProfilesReducers,
   searchedProfile: specificProfileReducer,
-
-
+  resetPassword: resetPasswordReducer,
+  updatePassword: updatePasswordReducer,
 });
