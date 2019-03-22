@@ -10,6 +10,7 @@ import specificProfileReducer from './specificProfileReducer';
 import resetPasswordReducer from './resetPasswordReducer';
 import updatePasswordReducer from './updatePasswordReducer';
 import ArticlesReducer from './articlesReducer';
+import getAllArticlesReducer from './listArticlesReducer';
 
 export default combineReducers({
   verify: verifyReducer,
@@ -23,4 +24,5 @@ export default combineReducers({
   resetPassword: resetPasswordReducer,
   updatePassword: updatePasswordReducer,
   article: ArticlesReducer,
+  getAll: getAllArticlesReducer,
 });
