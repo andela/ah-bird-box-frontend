@@ -64,7 +64,7 @@ class Profile extends React.Component {
                 floated="right"
                 style={{ width: '130px', height: '130px' }}
               />
-              <Modal trigger={<Button>Edit Profile</Button>} closeIcon className="modal close">
+              <Modal trigger={<Button id="edit">Edit Profile</Button>} closeIcon className="modal close">
                 <Modal.Content>
                   <EditProfile />
                 </Modal.Content>
@@ -76,12 +76,12 @@ class Profile extends React.Component {
             <h5 className="col-sm-6">
               <Icon className="users icon" />
               <Link to="/profiles">Following</Link>
-              {this.state.followers.length}
+              {` ${this.state.followers.length}`}
             </h5>
             <h5 className="col-sm-6">
               <Icon className="users icon" />
               Followers
-              {this.state.following.length}
+              {` ${this.state.following.length}`}
             </h5>
           </div>
           <h4 id="personal-info">Personal Info</h4>
