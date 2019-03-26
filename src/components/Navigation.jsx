@@ -21,34 +21,37 @@ class NavigationView extends Component {
     window.location.assign('/article');
   }
 
+  headHome = (event) => {
+    event.preventDefault();
+    window.location.assign('/');
+  }
+
+  handleProfile = (event) => {
+    event.preventDefault();
+    window.location.assign('/getprofile');
+  }
+
   render() {
     const loggedinUser = window.localStorage.getItem('token');
     return (
       <React.Fragment>
         <Menu pointing secondary fixed="top" className="top-menu">
-          <NavLink to="/">
+          <NavLink to="/" onClick={this.headHome}>
             <Menu.Item
               name="Author's Haven"
               className="brand"
-            />
-          </NavLink>
-          <NavLink to="/">
-            <Menu.Item
-              name="Articles"
-              active
-              onClick={this.handleItemClick}
             />
           </NavLink>
 
           <Menu.Menu position="right">
             {loggedinUser ? (
               <React.Fragment>
-                <Menu.Item>
+                <Menu.Item className="create-article">
                   <Button primary onClick={this.createArticle}>Create Article</Button>
                 </Menu.Item>
                 <Dropdown item text={window.localStorage.getItem('username')}>
                   <Dropdown.Menu>
-                    <NavLink to="/getprofile">
+                    <NavLink to="/getprofile" onClick={this.handleProfile}>
                       <Menu.Item name="Profile" />
                     </NavLink>
                     <NavLink to="/">

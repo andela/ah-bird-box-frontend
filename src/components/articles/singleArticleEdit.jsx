@@ -4,6 +4,9 @@ import { Editor } from 'react-draft-wysiwyg';
 import {
   EditorState, convertFromRaw, convertToRaw,
 } from 'draft-js';
+import {
+  Form, Divider,
+} from 'semantic-ui-react';
 import Loader from '../loader';
 import fetchSingleArticle, {
   updateArticle,
@@ -32,7 +35,7 @@ class EditArticle extends Component {
     const { isSuccess, articles } = this.props.article;
     if (isSuccess && this.update) {
       this.setState({
-        editorState: EditorState.createWithContent(convertFromRaw(JSON.parse(articles.article.body))),
+        editorState: EditorState.createWithContent(convertFromRaw(JSON.parse(articles.body))),
       });
       this.update = false;
     }
@@ -95,15 +98,38 @@ class EditArticle extends Component {
     }
 
     const { editorState } = this.state;
+    const { isSuccess, articles } = this.props.article;
     return (
       <div className="container" id="edit-article-holder">
         <form onSubmit={this.onSubmit}>
-          <p>
-            <input type="text" Value={this.props.article.isSuccess ? this.props.article.articles.article.title : null} name="title" className="form-control" placeholder="Title for the Article" />
-          </p>
-          <p>
-            <input type="text" Value={this.props.article.isSuccess ? this.props.article.articles.article.description : null} name="description" className="form-control" placeholder="Description for the article" />
-          </p>
+          <h2>
+            <Form.Input
+              fluid
+              name="title"
+              placeholder="Title"
+              transparent
+              className="editor-input"
+              defaultValue={isSuccess ? articles.title : null}
+              maxLength={100}
+              onChange={this.onChange}
+            />
+          </h2>
+          <Divider />
+          <h4>
+            <Form.Input
+              fluid
+              name="description"
+              placeholder="Description"
+              transparent
+              className="description-input"
+              defaultValue={isSuccess ? articles.description : null}
+              maxLength={300}
+              onChange={this.onChange}
+            />
+          </h4>
+
+          <Divider />
+
           <Editor
             toolbarOnFocus
             editorState={editorState}

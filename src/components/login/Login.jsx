@@ -16,6 +16,7 @@ class LoginView extends Component {
       if (user.user.success) {
         localStorage.setItem('username', user.user.username);
         localStorage.setItem('token', user.user.token);
+        localStorage.setItem('id', user.user.id);
         window.location.assign('/');
       }
     }

@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Editor } from 'react-draft-wysiwyg';
 import { EditorState, convertToRaw } from 'draft-js';
 import TagsInput from 'react-tagsinput';
-import 'react-tagsinput/react-tagsinput.css'
+import 'react-tagsinput/react-tagsinput.css';
 import {
   Form, Divider,
 } from 'semantic-ui-react';
@@ -19,14 +19,12 @@ class createArticleView extends Component {
       ...state,
       tags: [],
       editorState: EditorState.createEmpty(),
-      };
+    };
   }
 
-  handleChange = (tags) => {
-    this.setState({ 
-      tags 
-    });
-  };
+  componentDidMount = () => {
+    document.querySelector('.create-article').style.display = 'none';
+  }
 
   componentDidUpdate() {
     const { articles, history } = this.props;
@@ -36,6 +34,12 @@ class createArticleView extends Component {
       }
     }
   }
+
+  handleChange = (tags) => {
+    this.setState({
+      tags,
+    });
+  };
 
   uploadCallback = file => new Promise(
     (resolve, reject) => {
@@ -70,7 +74,7 @@ class createArticleView extends Component {
     const {
       title,
       description,
-      image,
+      image = event.target.image.files[0],
       tags,
       editorState,
     } = this.state;
@@ -93,7 +97,7 @@ class createArticleView extends Component {
     const { editorState } = this.state;
     return (
       <div id="create-article-container">
-        <form onSubmit={this.onSubmit} error className="create-article-form">
+        <form onSubmit={this.onSubmit} error className="create-article-form" encType="multipart/form-data">
           <h1>
             <Form.Input
               fluid
@@ -116,6 +120,7 @@ class createArticleView extends Component {
             onChange={this.onChange}
           />
           <Divider />
+
           <TagsInput
             value={this.state.tags}
             onChange={this.handleChange}
