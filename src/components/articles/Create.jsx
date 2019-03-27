@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Editor } from 'react-draft-wysiwyg';
 import { EditorState, convertToRaw } from 'draft-js';
+import TagsInput from 'react-tagsinput';
+import 'react-tagsinput/react-tagsinput.css'
 import {
   Form, Divider,
 } from 'semantic-ui-react';
@@ -9,17 +11,22 @@ import { createArticle } from '../../actions/articlesActions';
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 import './articles.scss';
 
-// This code is a modification of the sample login page from Semantic UI
 class createArticleView extends Component {
-  // Create a login view of the application
   constructor(props) {
     super(props);
     const state = this.props;
     this.state = {
       ...state,
+      tags: [],
       editorState: EditorState.createEmpty(),
-    };
+      };
   }
+
+  handleChange = (tags) => {
+    this.setState({ 
+      tags 
+    });
+  };
 
   componentDidUpdate() {
     const { articles, history } = this.props;
@@ -107,6 +114,11 @@ class createArticleView extends Component {
             className="description-input"
             maxLength={300}
             onChange={this.onChange}
+          />
+          <Divider />
+          <TagsInput
+            value={this.state.tags}
+            onChange={this.handleChange}
           />
           <Divider />
           <br />

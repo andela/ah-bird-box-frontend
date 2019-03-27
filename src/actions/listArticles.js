@@ -15,10 +15,10 @@ export const articlesGetAllTrigger = () => ({
   type: ARTICLES_GET_ALL_TRIGGER,
 });
 
-export const getArticles = () => (dispatch) => {
+export const getArticles = (page = 1) => (dispatch) => {
   dispatch(articlesGetAllTrigger());
   axiosConfig
-    .get('/api/articles/')
+    .get(`/api/articles/?page=${page}`, page)
     .then((response) => {
       dispatch(articlesGetAllSuccess(response.data));
     })

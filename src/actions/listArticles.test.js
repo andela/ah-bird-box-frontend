@@ -1,6 +1,10 @@
+import React from 'react';
 import moxios from 'moxios';
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
+import { shallow } from 'enzyme';
+import { Pagination } from 'semantic-ui-react';
+import HomeView from '../components/articles/List';
 import * as types from './types';
 import {
   articlesGetAllSuccess,
@@ -24,5 +28,9 @@ describe('The createArticle actions', () => {
     await store.dispatch(articlesGetAllSuccess());
     expect(store.getActions()).toEqual(returnedAction);
     done();
+  });
+  it('should render the pagination component', () => {
+    const wrapper = shallow(<HomeView />);
+    expect(wrapper.find(<Pagination totalPages={10} />)).toBeDefined();
   });
 });
