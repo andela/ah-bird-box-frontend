@@ -54,6 +54,9 @@ class NavigationView extends Component {
                     <NavLink to="/getprofile" onClick={this.handleProfile}>
                       <Menu.Item name="Profile" />
                     </NavLink>
+                    <NavLink to="/profiles">
+                      <Menu.Item name="View authors" />
+                    </NavLink>
                     <NavLink to="/">
                       <Menu.Item onClick={this.logout} name="Logout" />
                     </NavLink>

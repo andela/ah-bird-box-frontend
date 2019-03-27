@@ -71,3 +71,69 @@
 a {
   color:black;
 }
+
+#comment {
+  background-color: #21ba45 !important;
+  border: 1px solid #21ba45 !important;
+  margin-left: 474px;
+}
+
+#comment :hover {
+  background-color: white !important;
+  color: #21ba45 !important;
+  border: 1px solid #21ba45 !important;
+}
+
+#comment-field {
+  height: 40px;
+  overflow: hidden;
+}
+
+#comment-field:focus {
+  height: 150px;
+  overflow: hidden;
+}
+
+#cancel-comment-button, #delete-comment-button, #update-popup-button{
+  background-color: #21ba45 !important;
+  border: 1px solid #21ba45 !important;
+}
+
+#cancel-comment-button:hover, #delete-comment-button:hover, #update-popup-button:hover{
+  background-color: white !important;
+  color: #21ba45 !important;
+  border: 1px solid #21ba45 !important;
+}
+
+#avatar{
+  margin-left: 200px;
+}
+
+#author, #date{
+  margin-right: 200px;
+}
+
+.comment-body{
+  margin-left: 200px !important;
+  margin-right: 200px !important;
+  margin-top: 8px !important;
+}
+
+#reply-text{
+  color: #000 !important;
+  font-size: 12px !important;
+}
+
+#edit {
+  background-color: #21ba45;
+  color: white;
+  border: 1px solid #21ba45;
+}
+#edit:hover {
+  background-color: white;
+  color: #21ba45;
+  border: 1px solid #21ba45;
+}
+#card {
+  margin-bottom: 18px;
+}

@@ -23,7 +23,7 @@ const CardExampleCard = (props) => {
   });
   return (
     <div className="col-sm-4">
-      <Card>
+      <Card id="card">
         <Image src="https://picsum.photos/200/300?image=0" />
         <Card.Content>
           <Card.Header>{profile.username}</Card.Header>
@@ -33,11 +33,11 @@ const CardExampleCard = (props) => {
           <Card.Description>{profile.bio}</Card.Description>
         </Card.Content>
         {isFollowed ? (
-          <Button onClick={event => unFollowClick(event, profile)} compact>
+          <Button id="edit" onClick={event => unFollowClick(event, profile)} compact>
             unfollow
           </Button>
         ) : (
-          <Button onClick={event => followClick(event, profile)} compact>
+          <Button id="edit" onClick={event => followClick(event, profile)} compact>
             follow
           </Button>
         )}
