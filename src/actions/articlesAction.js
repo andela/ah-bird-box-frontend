@@ -1,9 +1,13 @@
 import { toastr } from 'react-redux-toastr';
 import {
-  FETCH_SINGLE, SINGLE_ARTICLE_FAIL,
-  SINGLE_ARTICLE_SUCCESS, START_UPDATE,
-  UPDATE_SUCCESS, UPDATE_FAIL,
-  START_DELETE, DELETE_SUCCESS,
+  FETCH_SINGLE,
+  SINGLE_ARTICLE_FAIL,
+  SINGLE_ARTICLE_SUCCESS,
+  START_UPDATE,
+  UPDATE_SUCCESS,
+  UPDATE_FAIL,
+  START_DELETE,
+  DELETE_SUCCESS,
   DELETE_FAILED,
 } from './types';
 import axiosConfig from '../config/axios';
@@ -52,7 +56,6 @@ export const deleteSuccess = payload => ({
 
 const fetchSingleArticle = slug => (dispatch) => {
   dispatch(fetchSingleStart());
-
   axiosConfig
     .get(`/api/articles/${slug}`)
     .then((response) => {

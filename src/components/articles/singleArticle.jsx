@@ -6,6 +6,8 @@ import { Label } from 'semantic-ui-react';
 import fetchSingleArticle, { deleteArticle } from '../../actions/articlesAction';
 import Loader from '../loader';
 import './articles.scss';
+import CommentReplyComment from '../comments/comments';
+import { deleteComment } from '../../actions/deleteComentAction';
 
 class SingleArticle extends Component {
   constructor(props) {
@@ -88,6 +90,10 @@ class SingleArticle extends Component {
             </Label>
           ))
         }
+        {
+          isSuccess ? <CommentReplyComment slug={this.slug} deleteComment={(commentId) => this.props.deleteComment(commentId)} /> : (null)
+        }
+
       </div>
 
     );
@@ -100,5 +106,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { fetchSingleArticle, deleteArticle },
+  { fetchSingleArticle, deleteArticle, deleteComment },
 )(SingleArticle);
