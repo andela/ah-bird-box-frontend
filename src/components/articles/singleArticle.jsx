@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import draftToHtml from 'draftjs-to-html';
 import { Redirect } from 'react-router-dom';
+import { Label } from 'semantic-ui-react';
 import fetchSingleArticle, { deleteArticle } from '../../actions/articlesAction';
 import Loader from '../loader';
 import './articles.scss';
@@ -77,6 +78,16 @@ class SingleArticle extends Component {
           </div>
         ) : (null) }
         <div id="single-article-container" />
+        <br />
+
+        {
+          (articles)
+          && articles.article.tags.map((object, i) => (
+            <Label as="a" className="article-tags" tag>
+              {object}
+            </Label>
+          ))
+        }
       </div>
 
     );

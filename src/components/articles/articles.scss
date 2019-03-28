@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Orbitron');
+@import url('https://fonts.googleapis.com/css?family=Indie+Flower');
 
 textarea {
     width: 100%;
@@ -87,11 +88,47 @@ h2.art-title {
 }
 
 #articles-list-container {
-	width: 80%;
+	width: 55%;
 	margin-left: 20vw;
 	margin-top: 20px;
 }
 
 .article-container {
 	padding: 35px;
+}
+
+.image {
+	width: 80px !important;
+	height: 80px !important;
+}
+
+.authors-haven-header {
+	padding-top: 200px;
+	background-image: url('./bg.jpg');
+	background-position: center;
+	background-size: cover;
+	text-align: center;
+	font-size: 40px;
+	height: 500px !important;
+	font-family: 'Indie Flower', cursive;
+}
+
+.article-title {
+	font-family: 'Open Sans', sans-serif;
+	color: black !important;
+}
+
+.article-description {
+	color: grey !important;
+	letter-spacing: 1.0px;
+	font-size: 16px;
+}
+
+.article-tags {
+	background-color: #cccccc !important;
+}
+
+#pagination {
+	margin-left: 280px;
+    margin-bottom: 20px;
 }
