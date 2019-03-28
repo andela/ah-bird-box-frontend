@@ -106,6 +106,7 @@ class EditArticle extends Component {
           </p>
           <Editor
             toolbarOnFocus
+            placeholder="The body of the article goes here..."
             editorState={editorState}
             toolbarClassName="toolbarClassName"
             wrapperClassName="wrapperClassName"
