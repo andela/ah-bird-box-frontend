@@ -3,7 +3,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {
-  Item, Label, Pagination
+  Item, Label, Pagination,
 } from 'semantic-ui-react';
 import renderHTML from 'react-render-html';
 import TruncateMarKup from 'react-truncate-markup';
@@ -12,9 +12,8 @@ import { getArticles } from '../../actions/listArticles';
 import './articles.scss';
 
 class HomeView extends Component {
-
   state = {
-    activePage: 1
+    activePage: 1,
   };
 
   componentDidMount() {
@@ -54,8 +53,8 @@ class HomeView extends Component {
             <Item.Image className="image"
               src={article.image_url
                 ? article.image_url
-                : 'https://res.cloudinary.com/muthuri/image/upload/v1553159318/main-main-reading.jpg'}
-              size="small"
+                : 'https://picsum.photos/500/300/?random'}
+              alt="cover_image"
             />
             <Item.Content>
               <Item.Header as="a">

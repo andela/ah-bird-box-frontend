@@ -56,11 +56,15 @@ const fetchSingleArticle = slug => (dispatch) => {
   axiosConfig
     .get(`/api/articles/${slug}`)
     .then((response) => {
-      dispatch(fetchSingleSuccess(response.data));
+      dispatch(fetchSingleSuccess(response.data.article));
     })
     .catch((error) => {
-      dispatch(fetchSingleFail(error.response.data.article.errors.error));
-      toastr.error('Article not found', error.response.data.article.errors.error);
+      try {
+        dispatch(fetchSingleFail(error.response.data.article.errors.error));
+        toastr.error('Article not found', error.response.data.article.errors.error);
+      } catch (errorLog) {
+        window.location.assign('/');
+      }
     });
 };
 
@@ -90,6 +94,44 @@ export const deleteArticle = slug => (dispatch) => {
     .catch((error) => {
       dispatch(deleteFailed(error.response));
       toastr.error(error.response.data.article.errors.error);
+    });
+};
+
+export const likeArticle = slug => (dispatch) => {
+  axiosConfig
+    .put(`/api/articles/${slug}/like/`)
+    .then((response) => {
+      dispatch(fetchSingleSuccess(response.data));
+    })
+    .catch((error) => {
+      switch (error.response.status) {
+        case 403:
+          toastr.info('We are glad you like it. You just need to login to communicate your like');
+          break;
+
+        default:
+          toastr.error('Retry again, could not work');
+          break;
+      }
+    });
+};
+
+export const dislikeArticle = slug => (dispatch) => {
+  axiosConfig
+    .put(`/api/articles/${slug}/dislike/`)
+    .then((response) => {
+      dispatch(fetchSingleSuccess(response.data));
+    })
+    .catch((error) => {
+      switch (error.response.status) {
+        case 403:
+          toastr.info('You just need to login to communicate your dislike');
+          break;
+
+        default:
+          toastr.error('Retry again, could not work');
+          break;
+      }
     });
 };
 

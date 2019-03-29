@@ -31,6 +31,8 @@ export const socialAuthLogin = payload => (dispatch) => {
     .then((response) => {
       dispatch(loginSuccess(response.data));
       localStorage.setItem('token', response.data.user.token);
+      localStorage.setItem('username', response.data.user.username);
+      localStorage.setItem('id', response.data.user.id);
     })
     .catch((error) => {
       dispatch(loginError(error.response.data));
