@@ -7,6 +7,8 @@ import fetchSingleArticle, { deleteArticle, likeArticle, dislikeArticle } from '
 import Loader from '../loader';
 import LikeDislike from './likeDislike';
 import './articles.scss';
+import CommentReplyComment from '../comments/comments';
+import { deleteComment } from '../../actions/deleteComentAction';
 
 class SingleArticle extends Component {
   constructor(props) {
@@ -113,6 +115,10 @@ class SingleArticle extends Component {
             </Label>
           ))
         }
+        {
+          isSuccess ? <CommentReplyComment slug={this.slug} deleteComment={(commentId) => this.props.deleteComment(commentId)} /> : (null)
+        }
+
       </div>
 
     );
@@ -130,5 +136,7 @@ export default connect(
     deleteArticle,
     likeArticle,
     dislikeArticle,
+    deleteComment,
+    
   },
 )(SingleArticle);
