@@ -72,8 +72,8 @@ h2.art-title {
 }
 
 #create-article-container {
-	width: 80%;
-	margin: auto;
+	width: 80% !important;
+    margin: auto !important;
 }
 
 #create-article-container .public-DraftEditor-content[contenteditable=true] {
