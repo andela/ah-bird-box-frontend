@@ -2,17 +2,17 @@ import { toastr } from 'react-redux-toastr';
 import { VERIFY_SUCCESS, VERIFY_FAIL, VERIFY_TRIGGER } from './types';
 import axiosConfig from '../config/axios';
 
-const verifySuccess = payload => ({
+export const verifySuccess = payload => ({
   type: VERIFY_SUCCESS,
   payload,
 });
 
-const verifyFail = payload => ({
+export const verifyFail = payload => ({
   type: VERIFY_FAIL,
   payload,
 });
 
-const verifyTrigger = () => ({
+export const verifyTrigger = () => ({
   type: VERIFY_TRIGGER,
 });
 
