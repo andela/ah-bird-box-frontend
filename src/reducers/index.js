@@ -11,6 +11,8 @@ import resetPasswordReducer from './resetPasswordReducer';
 import updatePasswordReducer from './updatePasswordReducer';
 import ArticlesReducer from './articlesReducer';
 import getAllArticlesReducer from './listArticlesReducer';
+import getCommentstReducer from './commentReducer';
+import rateArticlesReducer from './ratingReducer';
 
 export default combineReducers({
   verify: verifyReducer,
@@ -25,4 +27,6 @@ export default combineReducers({
   updatePassword: updatePasswordReducer,
   article: ArticlesReducer,
   getAll: getAllArticlesReducer,
+  getcomments: getCommentstReducer,
+  rate: rateArticlesReducer,
 });

@@ -2,10 +2,14 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import draftToHtml from 'draftjs-to-html';
 import { Redirect } from 'react-router-dom';
-import { Label } from 'semantic-ui-react';
-import fetchSingleArticle, { deleteArticle } from '../../actions/articlesAction';
+import { Label, Segment } from 'semantic-ui-react';
+import fetchSingleArticle, { deleteArticle, likeDislikeArticle } from '../../actions/articlesAction';
 import Loader from '../loader';
+import LikeDislike from './likeDislike';
 import './articles.scss';
+import CommentReplyComment from '../comments/comments';
+import { deleteComment } from '../../actions/deleteComentAction';
+import RateArticle from './rating';
 
 class SingleArticle extends Component {
   constructor(props) {
@@ -22,7 +26,7 @@ class SingleArticle extends Component {
   componentDidUpdate = () => {
     const { isSuccess, articles } = this.props.article;
     if (isSuccess && this.update) {
-      const contentInString = draftToHtml(JSON.parse(articles.article.body));
+      const contentInString = draftToHtml(JSON.parse(articles.body));
       document.getElementById('single-article-container').innerHTML = contentInString;
       this.update = false;
     }
@@ -31,6 +35,14 @@ class SingleArticle extends Component {
   handleDelete = (event) => {
     event.preventDefault();
     this.props.deleteArticle(this.slug);
+  }
+
+  handleLike = () => {
+    this.props.likeDislikeArticle(this.slug, 'like');
+  }
+
+  handleDislike = () => {
+    this.props.likeDislikeArticle(this.slug, 'dislike');
   }
 
   render() {
@@ -43,6 +55,8 @@ class SingleArticle extends Component {
       );
     }
 
+    const loggedinUser = window.localStorage.getItem('token');
+
     if (isDeleted && !isFound) {
       return <Redirect to="/" />;
     }
@@ -50,11 +64,12 @@ class SingleArticle extends Component {
     return (
       <div className="container" id="article-holder">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
-        { isSuccess ? (
-          <div>
-            {
-              localStorage.getItem('username') === articles.article.author ? (
-                <div id="button-controls">
+        <Segment>
+          { isSuccess ? (
+            <div>
+              {
+              localStorage.getItem('username') === articles.author ? (
+                <div className="button-controls">
 
                   <a href={`edit/${this.slug}`} className="float-e">
                     <i className="fa fa-pencil float-edit" />
@@ -65,30 +80,89 @@ class SingleArticle extends Component {
                 </div>
               ) : (null)
             }
-            <h2 className="art-title">{articles.article.title}</h2>
-            <h6>by</h6>
-            <h5>{articles.article.author}</h5>
-            <h3>
-              <em>
+              <h2 className="art-title">{articles.title}</h2>
+              <h6>
+                Authored by
+                {' '}
+                <b>{articles.author}</b>
+                {' '}
+                on
+                {' '}
+                <b>{articles.created_at}</b>
+              </h6>
+              <h3>
+                <em>
               &quot;
-                {articles.article.description}
+                  {articles.description}
                 &quot;
-              </em>
-            </h3>
-          </div>
-        ) : (null) }
-        <div id="single-article-container" />
+                </em>
+              </h3>
+            </div>
+          ) : (null) }
+          <div className="cover-image" />
+          <div id="single-article-container" />
+        </Segment>
+        {
+          isSuccess ? (
+            <LikeDislike handleLike={this.handleLike} handleDislike={this.handleDislike} />
+          ) : (null)
+        }
+
         <br />
 
         {
           (articles)
-          && articles.article.tags.map((object, i) => (
+          && articles.tags.map(object => (
             <Label as="a" className="article-tags" tag>
               {object}
             </Label>
           ))
         }
+        <div>
+
+          {loggedinUser ? (
+            <div>
+              {isSuccess ? (
+                <div>
+                  <br />
+                  <br />
+                  <div>
+                    {localStorage.getItem('username') === articles.author ? (null) : (
+                      <RateArticle />
+                    )}
+                  </div>
+                  <div className="avrgRating">
+                    <br />
+                    <h6>Avg. Rating</h6>
+                    <i className="fa fa-star" id="avgRating" />
+                    <h5 id="averageRating" className="art-avgRating">{articles.averageRating}</h5>
+                  </div>
+                </div>
+              ) : (null)
+              }
+            </div>
+          ) : (
+            <div>
+              {isSuccess ? (
+                <div className="avrgRating">
+                  <br />
+                  <br />
+                  <h6>Avg. Rating</h6>
+                  <i className="fa fa-star" id="avgRating" />
+                  <h5 className="art-avgRating">{articles.averageRating}</h5>
+                </div>
+              ) : (null)}
+            </div>
+          )}
+        </div>
+
+        {
+          isSuccess ? <CommentReplyComment slug={this.slug} deleteComment={commentId => this.props.deleteComment(commentId)} /> : (null)
+        }
+
+
       </div>
+
 
     );
   }
@@ -100,5 +174,10 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { fetchSingleArticle, deleteArticle },
+  {
+    fetchSingleArticle,
+    deleteArticle,
+    likeDislikeArticle,
+    deleteComment,
+  },
 )(SingleArticle);

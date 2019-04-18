@@ -1,9 +1,13 @@
 import { toastr } from 'react-redux-toastr';
 import {
-  FETCH_SINGLE, SINGLE_ARTICLE_FAIL,
-  SINGLE_ARTICLE_SUCCESS, START_UPDATE,
-  UPDATE_SUCCESS, UPDATE_FAIL,
-  START_DELETE, DELETE_SUCCESS,
+  FETCH_SINGLE,
+  SINGLE_ARTICLE_FAIL,
+  SINGLE_ARTICLE_SUCCESS,
+  START_UPDATE,
+  UPDATE_SUCCESS,
+  UPDATE_FAIL,
+  START_DELETE,
+  DELETE_SUCCESS,
   DELETE_FAILED,
 } from './types';
 import axiosConfig from '../config/axios';
@@ -52,15 +56,18 @@ export const deleteSuccess = payload => ({
 
 const fetchSingleArticle = slug => (dispatch) => {
   dispatch(fetchSingleStart());
-
   axiosConfig
     .get(`/api/articles/${slug}`)
     .then((response) => {
-      dispatch(fetchSingleSuccess(response.data));
+      dispatch(fetchSingleSuccess(response.data.article));
     })
     .catch((error) => {
-      dispatch(fetchSingleFail(error.response.data.article.errors.error));
-      toastr.error('Article not found', error.response.data.article.errors.error);
+      try {
+        dispatch(fetchSingleFail(error.response.data.article.errors.error));
+        toastr.error('Article not found', error.response.data.article.errors.error);
+      } catch (errorLog) {
+        window.location.assign('/');
+      }
     });
 };
 
@@ -90,6 +97,25 @@ export const deleteArticle = slug => (dispatch) => {
     .catch((error) => {
       dispatch(deleteFailed(error.response));
       toastr.error(error.response.data.article.errors.error);
+    });
+};
+
+export const likeDislikeArticle = (slug, operation) => (dispatch) => {
+  axiosConfig
+    .put(`/api/articles/${slug}/${operation}/`)
+    .then((response) => {
+      dispatch(fetchSingleSuccess(response.data));
+    })
+    .catch((error) => {
+      switch (error.response.status) {
+        case 403:
+          toastr.info('Kindly login to give your feedback');
+          break;
+
+        default:
+          toastr.error('Retry again, could not work');
+          break;
+      }
     });
 };
 

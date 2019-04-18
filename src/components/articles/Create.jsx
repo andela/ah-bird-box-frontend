@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Editor } from 'react-draft-wysiwyg';
 import { EditorState, convertToRaw } from 'draft-js';
 import TagsInput from 'react-tagsinput';
-import 'react-tagsinput/react-tagsinput.css'
+import 'react-tagsinput/react-tagsinput.css';
 import {
   Form, Button, Header, Segment
 } from 'semantic-ui-react';
@@ -19,14 +19,12 @@ class createArticleView extends Component {
       ...state,
       tags: [],
       editorState: EditorState.createEmpty(),
-      };
+    };
   }
 
-  handleChange = (tags) => {
-    this.setState({ 
-      tags 
-    });
-  };
+  componentDidMount = () => {
+    document.querySelector('.create-article').style.display = 'none';
+  }
 
   componentDidUpdate() {
     const { articles, history } = this.props;
@@ -36,6 +34,12 @@ class createArticleView extends Component {
       }
     }
   }
+
+  handleChange = (tags) => {
+    this.setState({
+      tags,
+    });
+  };
 
   uploadCallback = file => new Promise(
     (resolve, reject) => {
@@ -70,7 +74,7 @@ class createArticleView extends Component {
     const {
       title,
       description,
-      image,
+      image = event.target.image.files[0],
       tags,
       editorState,
     } = this.state;
@@ -93,9 +97,8 @@ class createArticleView extends Component {
     const { editorState } = this.state;
     return (
       <div id="create-article-container">
-        <Segment>
-          <form onSubmit={this.onSubmit}>
-            <Header textAlign="center" as="h2" color="green"><br/>Create Article</Header>
+        <form onSubmit={this.onSubmit} error className="create-article-form" encType="multipart/form-data">
+          <h1>
             <Form.Input
               fluid
               label="Add a title"
@@ -105,49 +108,57 @@ class createArticleView extends Component {
               maxLength={100}
               onChange={this.onChange}
             />
-            <Form.Input
-              fluid
-              label="Add a description"
-              name="description"
-              placeholder="Description"
-              className="description-input"
-              maxLength={300}
-              onChange={this.onChange}
-            />
-            <br />
-            <TagsInput
-              value={this.state.tags}
-              onChange={this.handleChange}
-            />
-            <br />
-            <Editor
-              toolbarOnFocus
-              body={editorState}
-              placeholder="The body of the article goes here..."
-              toolbarClassName="toolbarClassName"
-              wrapperClassName="wrapperClassName"
-              editorClassName="editorClassName"
-              onEditorStateChange={this.onEditorStateChange}
-              hashtag={{
-                separator: ' ',
-                trigger: '#',
-              }}
-              toolbar={{
-                inline: { inDropdown: true },
-                list: { inDropdown: true },
-                textAlign: { inDropdown: true },
-                link: { inDropdown: true },
-                history: { inDropdown: true },
-                image: {
-                  uploadEnabled: true,
-                  previewImage: true,
-                  uploadCallback: this.uploadCallback,
-                },
-              }}
-            />
-            <Button type="submit" fluid content="Create" className="ui green button"/>
-          </form>
-        </Segment>
+          </h1>
+          <Divider />
+          <Form.Input
+            fluid
+            name="description"
+            placeholder="Description"
+            transparent
+            className="description-input"
+            maxLength={300}
+            onChange={this.onChange}
+          />
+          <Divider />
+
+          <TagsInput
+            value={this.state.tags}
+            onChange={this.handleChange}
+          />
+          <Divider />
+          <br />
+          <Editor
+            toolbarOnFocus
+            placeholder="The body of the article goes here..."
+            body={editorState}
+            toolbarClassName="toolbarClassName"
+            wrapperClassName="wrapperClassName"
+            editorClassName="editorClassName"
+            onEditorStateChange={this.onEditorStateChange}
+            hashtag={{
+              separator: ' ',
+              trigger: '#',
+            }}
+            toolbar={{
+              inline: { inDropdown: true },
+              list: { inDropdown: true },
+              textAlign: { inDropdown: true },
+              link: { inDropdown: true },
+              history: { inDropdown: true },
+              image: {
+                uploadEnabled: true,
+                previewImage: true,
+                uploadCallback: this.uploadCallback,
+              },
+            }}
+          />
+          <input
+            type="submit"
+            value="Post"
+            className="btn btn-primary btn-lg"
+            id="submit"
+          />
+        </form>
       </div>
     );
   }

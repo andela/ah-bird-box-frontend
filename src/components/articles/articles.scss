@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Orbitron');
 @import url('https://fonts.googleapis.com/css?family=Indie+Flower');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
 
 textarea {
     width: 100%;
@@ -12,20 +13,20 @@ input {
 }
 
 #article-holder {
-    width: 60%;
-    background-color: #f2f2f2 !important;
-    padding: 30px 70px 70px;
     text-align: center;
 }
 
 #article-holder p span {
-    background-color: #f2f2f2 !important;
-    font-family: 'Times New Roman', Times, serif !important;
+	font-family: 'Open Sans', sans-serif !important;
     font-size: 40px;
 }
 
 #article-holder h3 {
     color: grey;
+}
+
+#article-holder img {
+	max-width: 680px;
 }
 
 h2.art-title {
@@ -34,48 +35,40 @@ h2.art-title {
 }
 
 #single-article-container {
-    margin-top: 30px;
-    font-size: 20px;
+	max-width: 80%;
+	font-size: 20px;
+	margin: 0px auto;
+	text-align: center;
+	padding: 10px 100px;
 }
 
 #edit-article-holder {
     width: 80%;
 }
 
-*{padding:0;margin:0;}
-
-.float-e{
+.button-controls a {
 	position:fixed;
-	width:60px;
-	height:60px;
-	bottom:300px;
-	right:80px;
+	width:45px;
+	height:45px;
+	color:#FFF;
+	border-radius:50px;
+	text-align:center;
+	box-shadow: 2px 2px 3px #999;
+}
+
+.float-e {
+	bottom:70px;
+	right:90px;
 	background-color: #21ba45;
-	color:#FFF;
-	border-radius:50px;
-	text-align:center;
-	box-shadow: 2px 2px 3px #999;
 }
 
-.float-edit{
-	margin-top:22px;
+.button-controls a i {
+	margin-top:16px;
 }
-
 .float-t {
-	position:fixed;
-	width:60px;
-	height:60px;
-	bottom:230px;
-	right:80px;
+	bottom:20px;
+	right:90px;
 	background-color: red;
-	color:#FFF;
-	border-radius:50px;
-	text-align:center;
-	box-shadow: 2px 2px 3px #999;
-}
-
-.float-trash{
-	margin-top:22px;
 }
 
 #create-article-container {
@@ -131,4 +124,20 @@ h2.art-title {
 #pagination {
 	margin-left: 280px;
     margin-bottom: 20px;
+}
+
+.cover-image {
+	width: 100%;
+	height: 60vh;
+	background-image: url('https://picsum.photos/1200/800/?random');
+}
+#avgRating {
+	font-size: 2em;
+	color: goldenrod;
+	padding-left: 5px; 
+}
+
+.avrgRating {
+	font-family: 'Orbitron', sans-serif;
+	margin-bottom: 5em;
 }
