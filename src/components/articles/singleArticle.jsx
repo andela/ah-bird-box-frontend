@@ -47,7 +47,7 @@ class SingleArticle extends Component {
 
   render() {
     const {
-      isLoading, isSuccess, isDeleted, isFound, articles,
+      isLoading, isSuccess, isDeleted, isFound, articles
     } = this.props.article;
     if (isLoading) {
       return (
@@ -120,6 +120,7 @@ class SingleArticle extends Component {
         }
         <div>
 
+
           {loggedinUser ? (
             <div>
               {isSuccess ? (
@@ -129,6 +130,7 @@ class SingleArticle extends Component {
                   <div>
                     {localStorage.getItem('username') === articles.author ? (null) : (
                       <RateArticle />
+
                     )}
                   </div>
                   <div className="avrgRating">
@@ -138,6 +140,7 @@ class SingleArticle extends Component {
                     <h5 id="averageRating" className="art-avgRating">{articles.averageRating}</h5>
                   </div>
                 </div>
+
               ) : (null)
               }
             </div>
