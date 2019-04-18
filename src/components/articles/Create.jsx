@@ -5,7 +5,7 @@ import { EditorState, convertToRaw } from 'draft-js';
 import TagsInput from 'react-tagsinput';
 import 'react-tagsinput/react-tagsinput.css';
 import {
-  Form, Divider,
+  Form, Divider
 } from 'semantic-ui-react';
 import { createArticle } from '../../actions/articlesActions';
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
@@ -101,9 +101,9 @@ class createArticleView extends Component {
           <h1>
             <Form.Input
               fluid
+              label="Add a title"
               name="title"
               placeholder="Title"
-              transparent
               className="editor-input"
               maxLength={100}
               onChange={this.onChange}
