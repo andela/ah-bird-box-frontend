@@ -100,35 +100,16 @@ export const deleteArticle = slug => (dispatch) => {
     });
 };
 
-export const likeArticle = slug => (dispatch) => {
+export const likeDislikeArticle = (slug, operation) => (dispatch) => {
   axiosConfig
-    .put(`/api/articles/${slug}/like/`)
+    .put(`/api/articles/${slug}/${operation}/`)
     .then((response) => {
       dispatch(fetchSingleSuccess(response.data));
     })
     .catch((error) => {
       switch (error.response.status) {
         case 403:
-          toastr.info('We are glad you like it. You just need to login to communicate your like');
-          break;
-
-        default:
-          toastr.error('Retry again, could not work');
-          break;
-      }
-    });
-};
-
-export const dislikeArticle = slug => (dispatch) => {
-  axiosConfig
-    .put(`/api/articles/${slug}/dislike/`)
-    .then((response) => {
-      dispatch(fetchSingleSuccess(response.data));
-    })
-    .catch((error) => {
-      switch (error.response.status) {
-        case 403:
-          toastr.info('You just need to login to communicate your dislike');
+          toastr.info('Kindly login to give your feedback');
           break;
 
         default:
