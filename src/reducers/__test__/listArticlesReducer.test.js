@@ -1,9 +1,9 @@
-import * as types from '../actions/types';
-import articlesReducer from './listArticlesReducer';
+import * as types from '../../actions/types';
+import getAllArticlesReducer from '../listArticlesReducer';
 
 describe('Create article reducer', () => {
   it('should return initial state', () => {
-    expect(articlesReducer(undefined, {})).toEqual({
+    expect(getAllArticlesReducer(undefined, {})).toEqual({
       isLoading: false,
       success: false,
       articles: {},
@@ -11,7 +11,7 @@ describe('Create article reducer', () => {
     });
   });
   it('should return state after article create request', () => {
-    expect(articlesReducer({}, {
+    expect(getAllArticlesReducer({}, {
       type: types.ARTICLES_GET_ALL_TRIGGER,
       isLoading: true,
       success: false,
@@ -21,7 +21,7 @@ describe('Create article reducer', () => {
     });
   });
   it('should return state after create article success', () => {
-    expect(articlesReducer({}, {
+    expect(getAllArticlesReducer({}, {
       type: types.ARTICLES_GET_ALL_SUCCESS,
       isLoading: false,
       success: true,
@@ -31,7 +31,7 @@ describe('Create article reducer', () => {
     });
   });
   it('should return state after create article failure', () => {
-    expect(articlesReducer({}, {
+    expect(getAllArticlesReducer({}, {
       type: types.ARTICLES_GET_ALL_FAILED,
       isLoading: false,
       success: false,

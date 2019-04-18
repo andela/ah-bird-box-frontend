@@ -3,12 +3,13 @@ import { connect } from 'react-redux';
 import draftToHtml from 'draftjs-to-html';
 import { Redirect } from 'react-router-dom';
 import { Label, Segment } from 'semantic-ui-react';
-import fetchSingleArticle, { deleteArticle, likeArticle, dislikeArticle } from '../../actions/articlesAction';
+import fetchSingleArticle, { deleteArticle, likeDislikeArticle } from '../../actions/articlesAction';
 import Loader from '../loader';
 import LikeDislike from './likeDislike';
 import './articles.scss';
 import CommentReplyComment from '../comments/comments';
 import { deleteComment } from '../../actions/deleteComentAction';
+import RateArticle from './rating';
 
 class SingleArticle extends Component {
   constructor(props) {
@@ -37,22 +38,24 @@ class SingleArticle extends Component {
   }
 
   handleLike = () => {
-    this.props.likeArticle(this.slug);
+    this.props.likeDislikeArticle(this.slug, 'like');
   }
 
   handleDislike = () => {
-    this.props.dislikeArticle(this.slug);
+    this.props.likeDislikeArticle(this.slug, 'dislike');
   }
 
   render() {
     const {
-      isLoading, isSuccess, isDeleted, isFound, articles,
+      isLoading, isSuccess, isDeleted, isFound, articles
     } = this.props.article;
     if (isLoading) {
       return (
         <Loader />
       );
     }
+
+    const loggedinUser = window.localStorage.getItem('token');
 
     if (isDeleted && !isFound) {
       return <Redirect to="/" />;
@@ -115,11 +118,54 @@ class SingleArticle extends Component {
             </Label>
           ))
         }
+        <div>
+
+
+          {loggedinUser ? (
+            <div>
+              {isSuccess ? (
+                <div>
+                  <br />
+                  <br />
+                  <div>
+                    {localStorage.getItem('username') === articles.author ? (null) : (
+                      <RateArticle />
+
+                    )}
+                  </div>
+                  <div className="avrgRating">
+                    <br />
+                    <h6>Avg. Rating</h6>
+                    <i className="fa fa-star" id="avgRating" />
+                    <h5 id="averageRating" className="art-avgRating">{articles.averageRating}</h5>
+                  </div>
+                </div>
+
+              ) : (null)
+              }
+            </div>
+          ) : (
+            <div>
+              {isSuccess ? (
+                <div className="avrgRating">
+                  <br />
+                  <br />
+                  <h6>Avg. Rating</h6>
+                  <i className="fa fa-star" id="avgRating" />
+                  <h5 className="art-avgRating">{articles.averageRating}</h5>
+                </div>
+              ) : (null)}
+            </div>
+          )}
+        </div>
+
         {
-          isSuccess ? <CommentReplyComment slug={this.slug} deleteComment={(commentId) => this.props.deleteComment(commentId)} /> : (null)
+          isSuccess ? <CommentReplyComment slug={this.slug} deleteComment={commentId => this.props.deleteComment(commentId)} /> : (null)
         }
 
+
       </div>
+
 
     );
   }
@@ -134,9 +180,7 @@ export default connect(
   {
     fetchSingleArticle,
     deleteArticle,
-    likeArticle,
-    dislikeArticle,
+    likeDislikeArticle,
     deleteComment,
-    
   },
 )(SingleArticle);
